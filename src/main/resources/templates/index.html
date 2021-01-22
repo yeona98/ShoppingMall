@@ -2,26 +2,89 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Shopping Mall</title>
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 </head>
 <body>
-    <div class="row">
-        <div class="col-md-10">
-            <div th:if="${not #strings.isEmpty(userName)}">
-                Logged in as: <span id="login-user" th:text="${userName}"></span>
-                <a href="/logout" class="btn btn-sm btn-info active" role="button">Logout</a>
+
+    <header>
+        <div th:replace="fragments/header :: header"></div>
+    </header>
+
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1>Shopping Mall</h1>
+                <p class="lead text-muted">Welcome</p>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div th:if="${not #strings.isEmpty(userName)}">
+                                Logged in as: <span id="login-user" th:text="${userName}"></span>
+                                <a href="/logout" class="btn btn-sm btn-info active" role="button">Logout</a>
+                            </div>
+                            <div th:if="${#strings.isEmpty(userName)}">
+                                <a href="/oauth2/authorization/google" class="btn btn-primary my-2" role="button">Google Login</a>
+                                <a href="/oauth2/authorization/naver" class="btn btn-secondary my-2" role="button">Naver Login</a>
+                            </div>
+                        </div>
+                    </div>
+
             </div>
-            <div th:if="${#strings.isEmpty(userName)}">
-                <a href="/oauth2/authorization/google" class="btn btn-sm btn-success active" role="button">Google Login</a>
-                <a href="/oauth2/authorization/naver" class="btn btn-sm btn-secondary active" role="button">Naver Login</a>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div id="items-box" class="row">
+
+                </div>
             </div>
         </div>
-    </div>
+
+    </main>
+
+    <footer class="text-muted">
+        <div th:replace="fragments/footer :: footer"></div>
+    </footer>
+
+
+
 </body>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 </html>
