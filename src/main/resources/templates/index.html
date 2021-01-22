@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-10">
+            <div th:if="${not #strings.isEmpty(userName)}">
+                Logged in as: <span id="login-user" th:text="${userName}"></span>
+                <a href="/logout" class="btn btn-sm btn-info active" role="button">Logout</a>
+            </div>
+            <div th:if="${#strings.isEmpty(userName)}">
+                <a href="/oauth2/authorization/google" class="btn btn-sm btn-success active" role="button">Google Login</a>
+                <a href="/oauth2/authorization/naver" class="btn btn-sm btn-secondary active" role="button">Naver Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</html>
